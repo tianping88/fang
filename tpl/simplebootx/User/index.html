@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>{$user_nicename|default='未填写'}的个人资料-{$site_name}</title>
+<meta name="keywords" content="{$site_seo_keywords}" />
+<meta name="description" content="{$site_seo_description}" />
+<meta name="author" content="永川家政网" />
+<tc_include file="Public:head" />
+</head>
+<body class="body-white" id="top">
+	<tc_include file="Public:nav" />
+
+		<div class="container tc-main">
+                <div class="row">
+                
+                <div class="tabs col-md-offset-2 col-md-8">
+                               <!-- <ul class="nav nav-tabs centertab" >
+                                   <li class="active"><a href="#one" data-toggle="tab"><i class="fa fa-list-alt"></i>个人中心</a></li>
+                               </ul> -->
+                               <div class="tab-content">
+                                   <div class="tab-pane active" id="one">
+                                   		<div class="col-md-3">
+						                	<a href="javascript:;">
+						                	<if condition="empty($avatar)">
+								            <img src="__TMPL__/Public/images/headicon_128.png" class="headicon"/>
+								            <else/>
+								            <img src="{:sp_get_user_avatar_url($avatar)}" class="headicon"/>
+								            </if>
+								          	</a>
+							          	</div>
+							          	<div class="col-md-5">
+                                                <dl class="dl-horizontal">
+                                                <dt>昵称</dt>
+                                                <dd>{$user_nicename|default='未填写'}</dd>
+                                                <dt>性别</dt>
+                                                <dd><php>
+        					               				$sexs=array("0"=>"保密","1"=>"男","2"=>"女");
+        					               				
+        					               				</php>
+        					               					{$sexs[$sex]}</dd>
+                                                <dt>生日</dt>
+                                                <dd>{$birthday|default='未填写'}</dd>
+                                                <dt>个人网址</dt>
+                                                <dd>{$user_url|default='未填写'}</dd>
+                                                <dt>个性签名</dt>
+                                                <dd>{$signature|default='未填写'}</dd>
+                                                </dl>
+					               		
+					               		</div>
+                                   </div>
+                               </div>							
+                 </div>
+                </div>
+</div>
+		<tc_include file="Public:footer" />
+
+	
+	<!-- /container -->
+
+	<tc_include file="Public:scripts" />
+</body>
+</html>

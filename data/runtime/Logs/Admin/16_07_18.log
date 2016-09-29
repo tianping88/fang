@@ -1,0 +1,26 @@
+[ 2016-07-18T14:29:32+08:00 ] 127.0.0.1 /fang/Admin/public/dologin.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `sp_users` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `sp_users` WHERE `user_login` = 'admin' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sp_role_user` [ RunTime:0.0020s ]
+SQL: SELECT `role_id` FROM sp_role_user a INNER JOIN sp_role as b on a.role_id =b.id  WHERE `user_id` = '1' AND `status` = 1  [ RunTime:0.0220s ]
+SQL: UPDATE `sp_users` SET `user_login`='admin',`user_pass`='c535018ee94621232f297a57a5a743894a0e4a801fc389af',`user_nicename`='回到起点',`user_email`='497731598@qq.com',`user_url`='http;//www.jiazhengyc.com',`avatar`='5653dbdc47801.jpg',`sex`='1',`birthday`='1974-10-26',`signature`='这是什么东西啊，不想说出来啊，请你不要见谅',`last_login_ip`='127.0.0.1',`last_login_time`='2016-07-18 14:29:31',`create_time`='2015-04-28 10:30:38',`user_activation_key`='',`user_status`='1',`score`='0',`user_type`='1' WHERE `id` = 1 [ RunTime:0.0570s ]
+
+[ 2016-07-18T14:29:43+08:00 ] 127.0.0.1 /fang/Admin/Menu/index/menuid/100.html
+NOTIC: D方法实例化没找到模型类Common\Model\AuthRuleModel
+
+[ 2016-07-18T14:29:46+08:00 ] 127.0.0.1 /fang/Admin/Menu/edit/id/132/menuid/100.html
+NOTIC: D方法实例化没找到模型类Common\Model\AuthRuleModel
+
+[ 2016-07-18T14:40:24+08:00 ] 127.0.0.1 /fang/Admin/menu/add.html
+NOTIC: D方法实例化没找到模型类Common\Model\AuthRuleModel
+
+[ 2016-07-18T14:40:31+08:00 ] 127.0.0.1 /fang/Admin/menu/index.html
+NOTIC: D方法实例化没找到模型类Common\Model\AuthRuleModel
+
+[ 2016-07-18T14:40:36+08:00 ] 127.0.0.1 /fang/Admin/Menu/add/parentid/109.html
+NOTIC: D方法实例化没找到模型类Common\Model\AuthRuleModel
+

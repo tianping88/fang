@@ -1,0 +1,108 @@
+<admintpl file="header" />
+<body class="J_scroll_fixed">
+	<div class="wrap">
+	                                  <form name="myform" id="myform" action="{:u('add_post')}" method="post" class="form-horizontal J_ajaxForm">
+ 
+  <div class="col-auto">
+    <div class="table_full">
+      <table class="table table-bordered ">
+            <tr>
+              <th width="80">服务项目</th>
+              <td>
+				<select style="max-height: 100px;" name="post[termid]">
+					{$taxonomys}
+				</select>
+				<div>
+				
+				</div>
+              </td>
+            </tr>
+            <tr>
+              <th width="80">姓名 </th>
+              <td>
+              	<input type="text" style="width:400px;" name="post[ename]" id="title"  required value="" style="color:" class="input input_hd J_title_color" placeholder="请输入标题" onkeyup="strlen_verify(this, 'title_len', 20)" />
+              	<span class="must_red">*</span>
+              </td>
+            </tr>
+            <tr>
+              <th width="80">地址</th>
+              <td><input type='text' name='post[address]' id='keywords' required value='' style='width:400px'   class='input' placeholder='请输入地址'> </td>
+            </tr>
+            <tr>
+              <th width="80">身份证号</th>
+              <td><input type='text' name='post[idcard]' id='source' required value='' style='width:400px'   class='input' placeholder='请输入身份证号'></td>
+            </tr>
+            <tr>
+          <th width="80">出生年月</th>
+        
+          <td><input type="text" name="post[birth]" id="updatetime" required value="1980-01-01" size="21" class="input length_3 J_datetime" style="width: 160px;"></td>
+        </tr>
+        
+        <th width="80">性别</th>
+        
+          <td>
+          <span class="switch_list cc">
+			<label class="radio"><input type="radio" name="post[sex]" value="1" ><span>男</span></label>
+			<label class="radio"><input type="radio" name="post[sex]" value="0" checked><span>女</span></label>
+          </td>
+        </tr>
+            <tr>
+              <th width="80">联系电话</th>
+              <td><input type='text' name='post[ephone]' id='source' required value='' style='width:400px'   class='input' placeholder='请输入手机号'></td>
+            </tr>
+            <tr>
+              <th width="80">学历</th>
+              <td><select style="max-height: 100px;" name="edu">
+              <option value="0" checked>====请选择====</option>
+                <volist name=":C('XUELI')" id="vo">
+                    
+					<option value="{$vo.id}">{$vo.value}</option>
+                </volist>
+				</select></td>
+            </tr>
+             <tr>
+              <th width="80">有何技能？</th>
+              <td><input type='text' name='post[eskill]' id='source' value='' style='width:400px'   class='input' placeholder='请输入技能'></td>
+            </tr>
+            <tr>
+              <th width="80">摘要 </th>
+              <td><textarea name='post[resume]' id='description'  required style='width:98%;height:50px;' placeholder='请填写摘要'></textarea><span class="must_red">*</span></td>
+            </tr>
+            <tr>
+              <th width="80">内容</th>
+              <td><div id='content_tip'></div>
+              <script type="text/plain" id="content" name="post[post_content]"></script>
+                <script type="text/javascript">
+                //编辑器路径定义
+                var editorURL = GV.DIMAUB;
+                </script>
+                <script type="text/javascript"  src="__ROOT__/statics/js/ueditor/ueditor.config.js"></script>
+                <script type="text/javascript"  src="__ROOT__/statics/js/ueditor/ueditor.all.min.js"></script>
+				</td>
+            </tr>
+            
+            <tr>
+              <th width="80">相册图集 </th>
+              <td>
+				<fieldset class="blue pad-10">
+		        <legend>图片列表</legend>
+		        <ul id="photos" class="picList unstyled"></ul>
+				</fieldset>
+				<a href="javascript:;" style="margin: 5px 0;" onclick="javascript:flashupload('albums_images', '图片上传','photos',change_images,'10,gif|jpg|jpeg|png|bmp,0','','','')" class="btn">选择图片 </a>
+			  </td>
+            </tr>
+                        
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="form-actions">
+        
+        <button class="btn btn-primary btn_submit J_ajax_submit_btn" type="submit">提交</button>
+        
+  </div>
+ </form>
+                                  </div>
+	<script src="__ROOT__/statics/js/common.js"></script>
+</body>
+</html>

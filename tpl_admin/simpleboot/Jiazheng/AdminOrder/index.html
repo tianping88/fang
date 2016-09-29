@@ -1,0 +1,152 @@
+<admintpl file="header" />
+<body class="J_scroll_fixed">
+	<div class="wrap J_check_wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="javascript:;">所有订单</a></li>
+			<li><a href="{:U('AdminOrder/add',array('term'=>empty($term['term_id'])?'':$term['term_id']))}" target="_self">添加订单</a></li>
+		</ul>
+		<form class="well form-search" method="post" action="{:U('AdminOrder/index')}">
+			<div class="search_type cc mb10">
+				<div class="mb10">
+					<span class="mr20">分类： 
+						<select class="select_2" name="term">
+							<option value='0'>全部</option>{$taxonomys}
+						</select> &nbsp;&nbsp;
+						时间：
+						<input type="text" name="start_time" class="J_date" value="{$formget.start_time|default=''}" style="width: 80px;" autocomplete="off">-
+						<input type="text" class="J_date" name="end_time" value="{$formget.end_time}" style="width: 80px;" autocomplete="off"> &nbsp; &nbsp;
+						关键字： 
+						<input type="text" name="keyword" style="width: 200px;" value="{$formget.keyword}" placeholder="请输入关键字...">
+						<input type="submit" class="btn btn-primary" value="搜索" />
+					</span>
+				</div>
+			</div>
+		</form>
+		<form class="J_ajaxForm" action="" method="post">
+			<div class="table-actions">
+				
+				<button class="btn btn-primary btn-small J_ajax_submit_btn" type="submit" data-action="{:U('AdminOrder/check',array('check'=>1))}" data-subcheck="true">审核</button>
+				<button class="btn btn-primary btn-small J_ajax_submit_btn" type="submit" data-action="{:U('AdminOrder/check',array('uncheck'=>1))}" data-subcheck="true">取消审核</button>
+
+				<button class="btn btn-primary btn-small J_ajax_submit_btn" type="submit" data-action="{:U('AdminOrder/delete')}" data-subcheck="true" data-msg="你确定删除吗？">删除</button>
+				<button class="btn btn-primary btn-small J_articles_move" type="button">批量派工</button>
+			</div>
+			<table class="table table-hover table-bordered table-list">
+				<thead>
+					<tr>
+						<th width="15"><label><input type="checkbox" class="J_check_all" data-direction="x" data-checklist="J_check_x"></label></th>
+						<th width="50">订单ID</th>
+						<th width="50">项目</th>
+						<th width="50">客户名称</th>
+						<th >客户地址</th>
+						<th >联系电话</th>
+						<th >服务时间</th>
+                        <th >服务人员</th>
+						<th >备注</th>
+						<th >订单状态</th>
+						<th >添加时间</th>
+						<th >更新时间</th>
+						<th >操作</th>
+					</tr>
+				</thead>
+				<php>
+				$status=array("1"=>"已审核","0"=>"未审核","-1"=>"删除");				
+				</php>
+				<foreach name="order" item="vo">
+				<tr>
+					<td><input type="checkbox" class="J_check" data-yid="J_check_y" data-xid="J_check_x" name="ids[]" value="{$vo.reorder}" title="ID:{$vo.reorder}"></td>
+					<td>{$vo.reorder}</td>
+					<td>{$terms[$vo['item']]}</td>
+					<td>{$vo.cname}</td>
+					<td>{$vo.address}</td>
+					<td>{$vo.phone}</td>
+					<td>{$vo['startdate']|date="Y-m-d H:i",###}</td>
+                    <td>{$vo.ename}-{$vo.eid}</td>
+					<td>{$vo['remark']}</td>
+					<td>{$status[$vo['orderstatus']]}</td>
+					<td>{$vo.create_time|date="Y-m-d H:i",###}</td>
+					<td>{$vo.update_time|date="Y-m-d H:i",###}</td>				
+					
+					<td>
+						<a href="{:U('AdminOrder/edit',array('id'=>$vo['reorder']))}">修改</a> | 
+						<a href="{:U('AdminOrder/delete',array('id'=>$vo['reorder']))}" class="J_ajax_del">删除</a></td>
+				</tr>
+				</foreach>
+				<tfoot>
+					<tr>
+						<th width="15"><label><input type="checkbox" class="J_check_all" data-direction="x" data-checklist="J_check_x"></label></th>
+						<th width="50">订单ID</th>
+						<th width="50">项目</th>
+						<th width="50">客户名称</th>
+						<th >客户地址</th>
+						<th >联系电话</th>
+						<th >服务时间</th>
+                        <th >服务人员</th>
+						<th >备注</th>
+						<th >订单状态</th>
+						<th >添加时间</th>
+						<th >更新时间</th>
+						<th >操作</th>
+					</tr>
+				</tfoot>
+			</table>
+			<div class="table-actions">
+				<button class="btn btn-primary btn-small J_ajax_submit_btn" type="submit" data-action="{:U('AdminOrder/check',array('check'=>1))}" data-subcheck="true">审核</button>
+				<button class="btn btn-primary btn-small J_ajax_submit_btn" type="submit" data-action="{:U('AdminOrder/check',array('uncheck'=>1))}" data-subcheck="true">取消审核</button>
+
+				<button class="btn btn-primary btn-small J_ajax_submit_btn" type="submit" data-action="{:U('AdminOrder/delete')}" data-subcheck="true" data-msg="你确定删除吗？">删除</button>
+				<button class="btn btn-primary btn-small J_articles_move" type="button">批量派工</button>
+			</div>
+			<div class="pagination">{$Page}</div>
+
+		</form>
+	</div>
+	<script src="__ROOT__/statics/js/common.js"></script>
+	<script>
+		function refersh_window() {
+			var refersh_time = getCookie('refersh_time');
+			if (refersh_time == 1) {
+				window.location = "{:U('AdminOrder/index',$formget)}";
+			}
+		}
+		setInterval(function() {
+			refersh_window();
+		}, 2000);
+		$(function() {
+			setCookie("refersh_time", 0);
+			Wind.use('ajaxForm', 'artDialog', 'iframeTools', function() {
+				//批量移动
+				$('.J_articles_move').click(
+						function(e) {
+							var str = 0;
+							var id = tag = '';
+							$("input[name='ids[]']").each(function() {
+								if ($(this).attr('checked')) {
+									str = 1;
+									id += tag + $(this).val();
+									tag = ',';
+								}
+							});
+							if (str == 0) {
+								art.dialog.through({
+									id : 'error',
+									icon : 'error',
+									content : '您没有勾选信息，无法进行操作！',
+									cancelVal : '关闭',
+									cancel : true
+								});
+								return false;
+							}
+							var $this = $(this);
+							art.dialog.open(
+									"__ROOT__/index.php?g=Jiazheng&m=AdminOrder&a=move&ids="
+											+ id, {
+										title : "批量派工",
+										width : "500px"
+									});
+						});
+			});
+		});
+	</script>
+</body>
+</html>

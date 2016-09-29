@@ -1,0 +1,89 @@
+<admintpl file="header" />
+<body class="J_scroll_fixed">
+	<div class="wrap">
+	                                   <form action="{:u('edit_post')}" method="post" class="form-horizontal J_ajaxForm">
+ 
+                                            <div class="control-group">
+                                   				<label class="control-label" for="input-user_nicename">服务项目</label>
+                                   				<div class="controls">
+                                   					<select style="max-height: 100px;" name="post[termid]">
+                                    					{$taxonomys}
+                                    				</select>
+                                   				</div>
+                                   			</div>
+                                            <div class="control-group">
+                                   				<label class="control-label" for="input-user_nicename">姓名</label>
+                                   				<div class="controls">
+                                   					<input type="text" style="width:400px;" name="post[ename]" id="title" required value="{$post.ename}" style="color:" class="input input_hd J_title_color" placeholder="请输入姓名" onkeyup="strlen_verify(this, 'title_len', 160)" />
+                                   				</div>
+                                   			</div>
+                                            <div class="control-group">
+                                   				<label class="control-label" for="input-user_nicename">地址</label>
+                                   				<div class="controls">
+                                   					<input type='text' name='post[address]' id='keywords' style='width:400px' value="{$post['address']}"  class='input' placeholder='请输入地址'>
+                                   				</div>
+                                   			</div>
+                                            <div class="control-group">
+                                   				<label class="control-label" for="input-user_nicename">身份证号</label>
+                                   				<div class="controls">
+                                   					<input type='text' name='post[idcard]' id='source' value="{$post['idcard']}" style='width:400px'   class='input' placeholder='请输入身份证号'>
+                                   				</div>
+                                   			</div>
+                                            <div class="control-group">
+                                   				<label class="control-label" for="input-user_nicename">出生年月</label>
+                                   				<div class="controls">
+                                   					<input type="text" name="post[birth]" id="updatetime" value="{$post.birth}" size="21" class="input-small J_datetime" style="width:160px;">
+                                   				</div>
+                                   			</div>
+                                            <div class="control-group">
+                                   				<label class="control-label" for="input-user_nicename">性别</label>
+                                   				<div class="controls">
+                                   					<span class="switch_list cc">
+                                            			<label class="radio"><input type="radio" name="post[sex]" value="1" {$post['sex']?"checked":""} ><span>男</span></label>
+                                            			<label class="radio"><input type="radio" name="post[sex]" value="0" {$post['sex']?"":"checked"}><span>女</span></label>
+                                                    </span>
+                                   				</div>
+                                   			</div>
+                                            <div class="control-group">
+                                   				<label class="control-label" for="input-user_nicename">联系电话</label>
+                                   				<div class="controls">
+                                   					<input type='text' name='post[ephone]' id='source' value="{$post['ephone']}" style='width:400px'   class='input' placeholder='请输入手机号'>
+                                   				</div>
+                                   			</div>
+                                            <div class="control-group">
+                                   				<label class="control-label" for="input-user_nicename">学历</label>
+                                   				<div class="controls">
+                                   					<select style="max-height: 100px;" name="post[edu]">
+                                                      <option value="0" {$post['edu']==0?"":"checked"}>====请选择====</option>
+                                                        <volist name=":C('XUELI')" id="vo">
+                                                            
+                                        					<option value="{$vo.id}" {$post['edu']==$vo['id']?"selected":""}>{$vo.value}</option>
+                                                        </volist>
+                                        				</select>
+                                   				</div>
+                                   			</div>
+                                            <div class="control-group">
+                                   				<label class="control-label" for="input-user_nicename">有何技能？</label>
+                                   				<div class="controls">
+                                   					<input type='text' name='post[eskill]' id='source' value="{$post['eskill']}" style='width:400px'   class='input' placeholder='请输入技能'>
+                                   				</div>
+                                   			</div>
+                                            <div class="control-group">
+                                   				<label class="control-label" for="input-user_nicename">个人介绍</label>
+                                   				<div class="controls">
+                                   					<textarea name='post[resume]' id='description' required style='width:98%;height:50px;'  placeholder='请填写摘要'>{$post.resume}</textarea>
+                                   				</div>
+                                   			</div>
+                                               <div class="control-group">
+                                   				<div class="controls">
+                                                    <input type="hidden" name="post[eid]" value="{$post.eid}">
+                                   					<button type="submit" class="btn J_ajax_submit_btn">保存</button>
+                                   				</div>
+                                   			</div>    
+ 
+                                              
+ </form>
+                                   </div>
+	<script src="__ROOT__/statics/js/common.js"></script>
+</body>
+</html>

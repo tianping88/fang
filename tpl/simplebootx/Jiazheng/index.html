@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+	<html>
+	<head>
+		<title>{$site_seo_title} {$site_name}</title>
+		<meta name="keywords" content="{$site_seo_keywords}" />
+		<meta name="description" content="{$site_seo_description}" />        
+		<tc_include file="Public:head" />
+	</head>
+<body>
+<tc_include file="Public:nav" />
+<div class="jumbotron">
+  <div class="container">
+  <div class="row">
+  <div class="col-md-8">
+     <h1><i class="fa fa-lightbulb-o"></i>&nbsp; 永川租房网！</h1>
+    <p>如果你是房东在永川租房网你可以免费发布住房，门面商铺，写字楼，厂房的租房信息</p>
+   <p>如果你是租房房客，在永川租房网也能找到你称心中意的房源信息,整租合租，应有尽有，合租还有主卧合租，床位合租，单间合租哦。</p>
+   <p>我是房东，马上<a class="btn btn-success" href="{:UU('jiazheng/index/postzufang')}">发布租房信息</a></p>
+  </div>
+  <div class="col-md-4">
+  
+  <h2>永川租房电话及联系方式</h2>
+  <p style="font-size: 30px;"><i class="fa fa-phone"></i>:134-5204-8245</p>
+  <p style="font-size: 30px;">
+  <i class="fa fa-qq"></i>:497731598
+  </p>
+  <p style="font-size: 30px;"><i class="fa fa-weixin"></i>:qx63com</p>
+  
+  </div>
+  </div>
+   
+  </div>
+</div>
+<div class="container">
+	
+	
+		<h2 class="text-center" style="margin: 50px 0;">我们的服务</h2>
+		
+	
+	<div class="row">
+        
+        <div class="col-md-8 col-md-offset-2">
+                                    <div class="row">
+                                            <div class="col-md-4">
+                                            <img src="__ROOT__/tpl/simplebootx/Public/images/1.jpg" class="img-responsive img-thumbnail" alt="永川保姆" />
+                                            <a href="zufang/1-0-0-0-0-1-0-0.html" class="title">永川住房出租</a>
+                                            
+                                            </div>
+                                            <div class="col-md-4">
+                                            <img src="__ROOT__/tpl/simplebootx/Public/images/2.jpg" class="img-responsive img-thumbnail" alt="永川月嫂" />
+                                            <a href="zufang/3-0-0-0-0-0-0-0.html" class="title">永川门市出租</a>
+                                            
+                                            </div>
+                                            <div class="col-md-4">
+                                            <img src="__ROOT__/tpl/simplebootx/Public/images/3.jpg" class="img-responsive img-thumbnail" alt="家庭保洁" />
+                                            <a href="zufang/2-0-0-0-0-0-0-0.html" class="title">永川写字楼出租</a>
+                                            
+                                            </div>
+                                    </div>
+        </div>
+        
+    <div class="clearfix"></div>
+   
+    
+		
+			 
+             <php>
+             $xueli=C('leibie');
+        $gongzi=C('zujin');
+        $housetype=C('housetype');
+        $zhuangxiu=C('zhuangxiu');
+             $where['serveritem']=1;
+		$house=sp_sql_jz("field:*;order:update_time desc;limit:5;",$where); 
+        $where['serveritem']=2;
+		$office=sp_sql_jz("field:*;order:update_time desc;limit:5;",$where);
+        $where['serveritem']=3;
+		$shop=sp_sql_jz("field:*;order:update_time desc;limit:5;",$where);
+	</php>
+    <h2 class="text-center" style="margin: 50px 0;">住房出租信息</h2>
+    <div class="col-md-12 employee" > 
+            
+                     <volist name="house" id="b">
+                     
+                         <div class="row">
+                            <div class="col-md-4"><a href="{:leuu('jiazheng/index/info',array('eid'=>$b['eid']))}">{$b.title}</a></div>
+                            <div class="col-md-2">{$housetype['house'][$b['housetype']]}【{$xueli['house'][$b['leibie']]}】</div>
+                            <div class="col-md-2">
+                            <if condition="$b.leibie eq 2">
+                            {$b.hzhx}{$b.hzcount}人合租
+                            <else />
+                            {$b.hxs}室{$b.hxt}厅
+                            </if>
+                            
+                            
+                            </div>
+                            <div class="col-md-2">{$b.mj}㎡</div>
+                            <div class="col-md-2">{$b.zj}</span>元/月</div>
+                         </div>    
+
+                        
+                     
+                     </volist>
+             
+    </div>
+    <h2 class="text-center" style="margin: 50px 0;">写字楼出租</h2>
+    <div class="col-md-12 employee" > 
+            
+                     <volist name="office" id="b">
+                     
+                         <div class="row">
+                            <div class="col-md-4"><a href="{:leuu('jiazheng/index/info',array('eid'=>$b['eid']))}">{$b.title}</a></div>
+                            <div class="col-md-2">{$housetype['office'][$b['housetype']]}【{$xueli['office'][$b['leibie']]}】</div>
+                            <div class="col-md-2">{$zhuangxiu[$b['zhuangxiu']]}</div>
+                            <div class="col-md-2">{$b.mj}㎡</div>
+                            <div class="col-md-2">{$b.zj}</span>元/月</div>
+                         </div>    
+
+                        
+                     
+                     </volist>
+             
+    </div>
+    <h2 class="text-center" style="margin: 50px 0;">商铺门面出租</h2>
+    <div class="col-md-12 employee" > 
+            
+                     <volist name="shop" id="b">
+                     
+                         <div class="row">
+                            <div class="col-md-4"><a href="{:leuu('jiazheng/index/info',array('eid'=>$b['eid']))}">{$b.title}</a></div>
+                            <div class="col-md-2">{$housetype['shop'][$b['housetype']]}【{$xueli['shop'][$b['leibie']]}】</div>
+                            <div class="col-md-2">{$zhuangxiu[$b['zhuangxiu']]}</div>
+                            <div class="col-md-2">{$b.mj}㎡</div>
+                            <div class="col-md-2">{$b.zj}</span>元/月</div>
+                         </div>    
+
+                        
+                     
+                     </volist>
+             
+    </div>         
+             
+</div>	
+		
+</div>
+<section id="baomuask">
+<div class="container">
+    <div class="row">
+    <div class="col-md-6">
+        <h3 class="text-center"><span>永川租房问答</span></h3>
+        <ul class="list-unstyled">
+        <li> <a href="#" target="_blank">如何找到优质的房源？</a></li>
+        <li><a href="#" target="_blank">房东老板出租房屋应注意些什么？</a> </li>
+        <li><a href="#" target="_blank">永川租房价格</a></li>
+        <li><a href="#" target="_blank">租房保证金该如何收取</a></li>
+        
+        </ul>
+                                                                
+                                                                 
+                                                                
+                                                                
+                            
+    </div>
+    <div class="col-md-6">
+        <h3 class="text-center"><span>永川租房动态</span></h3>
+        <ul class="list-unstyled">
+        <li> <a href="#" target="_blank">一季度永川租房动态</a></li>
+        <li><a href="#" target="_blank">永川流动人口大，租房未来趋势</a> </li>
+        <li><a href="#" target="_blank">如何管理好自己的房屋信息</a></li>
+        <li><a href="#" target="_blank">怎样充分利用自己的房源，达到回收最大化</a></li>
+        
+        </ul>
+    </div>
+    </div>
+    <php>
+		$lastnews=sp_sql_jz("cid:$portal_index_lastnews;field:*;order:listorder asc;limit:4;"); 
+	</php>
+	<div class="row">
+		<foreach name="lastnews" item="vo">
+		<php>$smeta=json_decode($vo['smeta'],true);</php>
+		<div class="col-md-3">
+			<div class="tc-gridbox">
+				<div class="header">
+					<div class="item-image">
+						<a href="{:leuu('article/index',array('id'=>$vo['tid']))}">
+							<if condition="empty($smeta['thumb'])"> 
+								<img src="__TMPL__Public/images/default_tupian1.png" class="img-responsive" alt="{$vo.post_title}"/>
+							<else /> 
+								<img src="{:sp_get_asset_upload_path($smeta['thumb'])}" class="img-responsive img-thumbnail" alt="{$vo.post_title}" />
+							</if>
+						</a>
+					</div>
+					<h3><a href="{:leuu('article/index',array('id'=>$vo['tid']))}">{$vo.post_title}</a></h3>
+					<hr>
+				</div>
+				<div class="body">
+					<p><a href="{:leuu('article/index',array('id'=>$vo['tid']))}">{:msubstr($vo['post_excerpt'],0,32)}</a></p>
+				</div>
+			</div>
+		</div>
+		</foreach>
+	</div>
+</div>
+
+</section>
+	
+	
+
+
+<tc_include file="Public:footer"/>
+<tc_include file="Public:scripts"/>
+{:hook('footer_end')}
+</body>
+</html>

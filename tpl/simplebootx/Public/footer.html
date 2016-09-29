@@ -1,0 +1,32 @@
+
+<!-- Footer================================================== -->
+
+{:hook('footer')}
+      <div id="footer">
+      <div class="container text-center">
+            
+            
+            
+                <div class="links">
+        <php>$links=sp_getlinks();</php>
+        友情链接：
+        <foreach name="links" item="vo">
+          <a href="{$vo.link_url}" target="{$vo.link_target}">{$vo.link_name}</a>
+        </foreach>
+        </div>
+        <p>
+        
+        
+        永川租房上永川租房网，永川住房出租，永川商铺门市出租，永川写字楼厂房出租。一家专注永川房屋出租的网站！<br />
+        永川租房网站由 <a href="http://www.jiazhengyc.com" rel="nofollow" target="_blank">永川家政网</a> 精心制作优化.<br />
+        版权所有 <a href="#">永川租房网</a><br />
+        </p>
+            
+            
+      
+      </div>
+        
+        
+      </div>
+      <div id="backtotop"><i class="fa fa-arrow-circle-up"></i></div>
+      {$site_tongji}

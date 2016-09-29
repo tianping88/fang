@@ -1,0 +1,4 @@
+[ 2016-06-16T09:35:37+08:00 ] 127.0.0.1 /yongchuanzufang/1-qingfeng-0-0-2-2-0-0.html
+ERR: 1054:Unknown column 'b.status' in 'where clause'
+ [ SQL语句 ] : SELECT COUNT(*) AS tp_count FROM sp_jz_employee a LEFT JOIN sp_district as b on a.areaid =b.id LEFT JOIN sp_jz_area as c on a.xqid = c.id  WHERE `serveritem` = '1' AND `areaid` = 'qingfeng' AND `housetype` = '2' AND `leibie` = '2' AND b.status = 1 LIMIT 1  
+

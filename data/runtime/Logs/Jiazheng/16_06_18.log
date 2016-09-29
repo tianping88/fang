@@ -1,0 +1,88 @@
+[ 2016-06-18T10:39:01+08:00 ] 127.0.0.1 /fang/Index/add_post.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004000s ]
+NOTIC: [8] Undefined index: thumb D:\wamp\www\fang\application\Jiazheng\Controller\IndexController.class.php 第 120 行.
+SQL: SHOW COLUMNS FROM `sp_common_action_log` [ RunTime:0.0020s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `sp_common_action_log` WHERE `object` = '13452048245' AND `action` = '894939' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `sp_users` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sp_users` WHERE `user_login` = '13452048245' LIMIT 1   [ RunTime:0.0000s ]
+SQL: INSERT INTO `sp_users` (`user_login`,`user_nicename`,`user_pass`,`last_login_ip`,`create_time`,`last_login_time`,`user_status`,`user_type`) VALUES ('13452048245','13452048245','c535018ee946c6d5c262612a5752e158724c68fc391e89af','127.0.0.1','2016-06-18 10:39:01','2016-06-18 10:39:01','1','2') [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `sp_role_user` [ RunTime:0.0190s ]
+SQL: INSERT INTO `sp_role_user` (`role_id`,`user_id`) VALUES ('2','28') [ RunTime:0.0000s ]
+NOTIC: [8] Undefined index: smeta D:\wamp\www\fang\application\Jiazheng\Controller\IndexController.class.php 第 136 行.
+NOTIC: [8] Undefined index: shopfor D:\wamp\www\fang\application\Jiazheng\Controller\IndexController.class.php 第 139 行.
+NOTIC: [2] array_filter() expects parameter 1 to be array, null given D:\wamp\www\fang\application\Jiazheng\Controller\IndexController.class.php 第 139 行.
+NOTIC: [2] implode(): Invalid arguments passed D:\wamp\www\fang\application\Jiazheng\Controller\IndexController.class.php 第 139 行.
+SQL: SHOW COLUMNS FROM `sp_jz_employee` [ RunTime:0.0030s ]
+NOTIC: [8] Undefined index: validate D:\wamp\www\fang\simplewind\Core\Library\Think\Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto D:\wamp\www\fang\simplewind\Core\Library\Think\Model.class.php 第 1128 行.
+SQL: INSERT INTO `sp_jz_employee` (`serveritem`,`areaid`,`xqname`,`xqid`,`address`,`leibie`,`housetype`,`hxs`,`hxt`,`hxw`,`mj`,`zhuangxiu`,`caoxiang`,`lc`,`lcall`,`lhh`,`lhd`,`lhs`,`zj`,`pricetype`,`paytype`,`peitao`,`title`,`photo`,`ruzhudate`,`ename`,`ephone`,`termid`,`resume`,`uid`,`smeta`,`shopfor`,`create_time`,`update_time`) VALUES ('1','46470','肖氏饭庄','0','永川区玉屏北路108号','1','1','1','1','1','100','1','1','1','2','1','1','1','200','3','1','1,2,3,4,5,6','肖氏饭庄住房整租  100平米  1室1厅','','2016-06-18 10:35','王','13452048245','1','&amp;lt;p&amp;gt;1111111111&amp;lt;br/&amp;gt;&amp;lt;/p&amp;gt;','28','null','','1466217541','1466217541') [ RunTime:0.0300s ]
+
+[ 2016-06-18T10:41:06+08:00 ] 127.0.0.1 /fang/AdminEmployee/edit_post.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `sp_users` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sp_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `sp_jz_employee` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sp_terms` [ RunTime:0.0020s ]
+NOTIC: [8] Undefined index: eskill D:\wamp\www\fang\application\Jiazheng\Controller\AdminEmployeeController.class.php 第 164 行.
+NOTIC: [2] array_filter() expects parameter 1 to be array, null given D:\wamp\www\fang\application\Jiazheng\Controller\AdminEmployeeController.class.php 第 164 行.
+NOTIC: [2] implode(): Invalid arguments passed D:\wamp\www\fang\application\Jiazheng\Controller\AdminEmployeeController.class.php 第 164 行.
+NOTIC: [8] Undefined index: techang D:\wamp\www\fang\application\Jiazheng\Controller\AdminEmployeeController.class.php 第 165 行.
+NOTIC: [2] array_filter() expects parameter 1 to be array, null given D:\wamp\www\fang\application\Jiazheng\Controller\AdminEmployeeController.class.php 第 165 行.
+NOTIC: [2] implode(): Invalid arguments passed D:\wamp\www\fang\application\Jiazheng\Controller\AdminEmployeeController.class.php 第 165 行.
+NOTIC: [8] Undefined index: jiguan D:\wamp\www\fang\application\Jiazheng\Controller\AdminEmployeeController.class.php 第 166 行.
+NOTIC: [2] array_filter() expects parameter 1 to be array, null given D:\wamp\www\fang\application\Jiazheng\Controller\AdminEmployeeController.class.php 第 166 行.
+NOTIC: [2] implode(): Invalid arguments passed D:\wamp\www\fang\application\Jiazheng\Controller\AdminEmployeeController.class.php 第 166 行.
+NOTIC: [8] Undefined index: validate D:\wamp\www\fang\simplewind\Core\Library\Think\Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto D:\wamp\www\fang\simplewind\Core\Library\Think\Model.class.php 第 1128 行.
+SQL: UPDATE `sp_jz_employee` SET `status`='1',`istop`='0',`recommended`='0',`termid`='3',`serveritem`='1',`areaid`='46470',`xqname`='肖氏饭庄',`xqid`='0',`address`='永川区玉屏北路108号',`leibie`='1',`housetype`='1',`hxs`='1',`hxt`='1',`hxw`='1',`mj`='100',`zhuangxiu`='1',`caoxiang`='1',`lc`='1',`lcall`='2',`lhh`='1',`lhd`='1',`lhs`='1',`zj`='200',`pricetype`='3',`paytype`='3',`title`='肖氏饭庄住房整租  100平米  1室1厅',`resume`='<p>&lt;p&gt;1111111111&lt;br/&gt;&lt;/p&gt;</p>',`photo`='',`ruzhudate`='2016-06-18',`ename`='王',`ephone`='13452048245',`smeta`='[]',`update_time`='1466217666' WHERE `eid` = 233 [ RunTime:0.0010s ]
+
+[ 2016-06-18T10:41:17+08:00 ] 127.0.0.1 /fang/AdminEmployee/edit_post.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `sp_users` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sp_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sp_jz_employee` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sp_terms` [ RunTime:0.0020s ]
+NOTIC: [8] Undefined index: eskill D:\wamp\www\fang\application\Jiazheng\Controller\AdminEmployeeController.class.php 第 164 行.
+NOTIC: [2] array_filter() expects parameter 1 to be array, null given D:\wamp\www\fang\application\Jiazheng\Controller\AdminEmployeeController.class.php 第 164 行.
+NOTIC: [2] implode(): Invalid arguments passed D:\wamp\www\fang\application\Jiazheng\Controller\AdminEmployeeController.class.php 第 164 行.
+NOTIC: [8] Undefined index: techang D:\wamp\www\fang\application\Jiazheng\Controller\AdminEmployeeController.class.php 第 165 行.
+NOTIC: [2] array_filter() expects parameter 1 to be array, null given D:\wamp\www\fang\application\Jiazheng\Controller\AdminEmployeeController.class.php 第 165 行.
+NOTIC: [2] implode(): Invalid arguments passed D:\wamp\www\fang\application\Jiazheng\Controller\AdminEmployeeController.class.php 第 165 行.
+NOTIC: [8] Undefined index: jiguan D:\wamp\www\fang\application\Jiazheng\Controller\AdminEmployeeController.class.php 第 166 行.
+NOTIC: [2] array_filter() expects parameter 1 to be array, null given D:\wamp\www\fang\application\Jiazheng\Controller\AdminEmployeeController.class.php 第 166 行.
+NOTIC: [2] implode(): Invalid arguments passed D:\wamp\www\fang\application\Jiazheng\Controller\AdminEmployeeController.class.php 第 166 行.
+NOTIC: [8] Undefined index: validate D:\wamp\www\fang\simplewind\Core\Library\Think\Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto D:\wamp\www\fang\simplewind\Core\Library\Think\Model.class.php 第 1128 行.
+SQL: UPDATE `sp_jz_employee` SET `status`='1',`istop`='0',`recommended`='0',`termid`='3',`serveritem`='1',`areaid`='46470',`xqname`='肖氏饭庄',`xqid`='0',`address`='永川区玉屏北路108号',`leibie`='1',`housetype`='1',`hxs`='1',`hxt`='1',`hxw`='1',`mj`='100',`zhuangxiu`='1',`caoxiang`='1',`lc`='1',`lcall`='2',`lhh`='1',`lhd`='1',`lhs`='1',`zj`='200',`pricetype`='3',`paytype`='3',`title`='肖氏饭庄住房整租  100平米  1室1厅',`resume`='<p><br/></p><p>1111111111<br/></p>',`photo`='',`ruzhudate`='2016-06-18',`ename`='王',`ephone`='13452048245',`smeta`='[]',`update_time`='1466217677' WHERE `eid` = 233 [ RunTime:0.0000s ]
+
+[ 2016-06-18T10:41:24+08:00 ] 127.0.0.1 /fang/AdminEmployee/edit_post.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `sp_users` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sp_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `sp_jz_employee` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sp_terms` [ RunTime:0.0020s ]
+NOTIC: [8] Undefined index: eskill D:\wamp\www\fang\application\Jiazheng\Controller\AdminEmployeeController.class.php 第 164 行.
+NOTIC: [2] array_filter() expects parameter 1 to be array, null given D:\wamp\www\fang\application\Jiazheng\Controller\AdminEmployeeController.class.php 第 164 行.
+NOTIC: [2] implode(): Invalid arguments passed D:\wamp\www\fang\application\Jiazheng\Controller\AdminEmployeeController.class.php 第 164 行.
+NOTIC: [8] Undefined index: techang D:\wamp\www\fang\application\Jiazheng\Controller\AdminEmployeeController.class.php 第 165 行.
+NOTIC: [2] array_filter() expects parameter 1 to be array, null given D:\wamp\www\fang\application\Jiazheng\Controller\AdminEmployeeController.class.php 第 165 行.
+NOTIC: [2] implode(): Invalid arguments passed D:\wamp\www\fang\application\Jiazheng\Controller\AdminEmployeeController.class.php 第 165 行.
+NOTIC: [8] Undefined index: jiguan D:\wamp\www\fang\application\Jiazheng\Controller\AdminEmployeeController.class.php 第 166 行.
+NOTIC: [2] array_filter() expects parameter 1 to be array, null given D:\wamp\www\fang\application\Jiazheng\Controller\AdminEmployeeController.class.php 第 166 行.
+NOTIC: [2] implode(): Invalid arguments passed D:\wamp\www\fang\application\Jiazheng\Controller\AdminEmployeeController.class.php 第 166 行.
+NOTIC: [8] Undefined index: validate D:\wamp\www\fang\simplewind\Core\Library\Think\Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto D:\wamp\www\fang\simplewind\Core\Library\Think\Model.class.php 第 1128 行.
+SQL: UPDATE `sp_jz_employee` SET `status`='1',`istop`='0',`recommended`='0',`termid`='3',`serveritem`='1',`areaid`='46470',`xqname`='肖氏饭庄',`xqid`='0',`address`='永川区玉屏北路108号',`leibie`='1',`housetype`='1',`hxs`='1',`hxt`='1',`hxw`='1',`mj`='100',`zhuangxiu`='1',`caoxiang`='1',`lc`='1',`lcall`='2',`lhh`='1',`lhd`='1',`lhs`='1',`zj`='200',`pricetype`='3',`paytype`='3',`title`='肖氏饭庄住房整租  100平米  1室1厅',`resume`='<p><br/></p><p>1111111111<br/></p>',`photo`='',`ruzhudate`='2016-06-18',`ename`='王',`ephone`='13452048245',`smeta`='[]',`update_time`='1466217684' WHERE `eid` = 233 [ RunTime:0.0010s ]
+

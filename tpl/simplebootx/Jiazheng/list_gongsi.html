@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{$name} {$seo_title} {$site_name}</title>
+	<meta name="keywords" content="{$seo_keywords}" />
+	<meta name="description" content="{$seo_description}">
+    <tc_include file="Public:head" />
+</head>
+<body>
+<tc_include file="Public:nav" />
+<div class="container tc-main">
+	
+	<ul class="breadcrumb">
+    <li>当前位置:</li>
+  <li><a href="__ROOT__">首页</a><span class="divider">/</span></li>
+  <li class="active"><a href="{:leuu('Gongsi/index',array('id'=>$cat_id))}">{$name}</a><span class="divider">/</span></li>
+ 
+</ul>
+    <div class="pg-opt pin">
+        <div class="container">
+            <h2>{$name}</h2>
+        </div>
+    </div>
+    <div class="row">
+		<div class="span9">
+		      
+				<php>
+					$lists = sp_gongsi("field:id,gname,service,address,gphone;cid:$cat_id","",5);
+                    
+				</php>
+                
+				<volist name="lists['list']" id="vo">
+                	<div class="well" style="background-color: #fff;">			
+				
+                  
+                      <h3><a href="{:leuu('Gongsi/info',array('id'=>$vo['id']))}">{$vo.gname}</a></h3>
+                      <p>{$vo.service|msubstr=0,100}</p>
+                    <p>公司地址：{$vo.address}</p>
+                    <p>联系电话：{$vo.gphone}</p>
+                    
+                    </div>
+                  
+                  
+                			
+               
+				</volist>
+                
+			<div class="clearfix"></div>	
+			
+			<div class="pagination">
+				<ul>
+					{$lists['page']}
+				</ul>
+			</div>
+		</div>
+		<div class="span3">
+			<div class="tc-box first-box">
+			
+	        	<div class="headtitle">
+	        		<h2>关注家政公司</h2>
+	        	</div>
+	        	<div class="ranking">
+	        		<php>
+						$hot_articles=sp_sql_gongsi("cid:$cat_id;field:gname,id;order:hits desc;limit:5;"); 
+					</php>
+		        	<ul class="unstyled">
+		        		<foreach name="hot_articles" item="vo">
+		        			<php>$top=$key<3?"class='top3'":"";</php>
+							<li {$top}><i>{$key+1}</i><a title="{$vo.gname}" href="{:leuu('gongsi/info',array('id'=>$vo['id']))}">{$vo.gname}</a></li>
+						</foreach>
+					</ul>
+				</div>
+			</div>
+			<div class="tc-box">
+	        	<div class="headtitle">
+	        		<h2>最新评论</h2>
+	        	</div>
+	        	<div class="comment-ranking">
+	        		<php>$last_comments=sp_get_comments("field:*;limit:0,5;order:createtime desc;");</php>
+	        		<foreach name="last_comments" item="vo">
+	                    <div class="comment-ranking-inner">
+	                        <i class="fa fa-comment"></i>
+	                        <a href="{:leuu('user/index/index',array('id'=>$vo['uid']))}">{$vo.full_name}:</a>
+	                        <span>{$vo.content}</span>
+	                        <a href="__ROOT__/{$vo.url}#comment{$vo.id}">查看原文</a>
+	                        <span class="comment-time">{:date('m月d日  H:i',strtotime($vo['createtime']))}</span>
+	                    </div>
+                    </foreach>
+                </div>
+			</div>
+			
+			<div class="tc-box">
+	        	<div class="headtitle">
+	        		<h2>最新加入</h2>
+	        	</div>
+	        	<php>
+	        	$last_users=sp_get_users("field:*;limit:0,8;order:create_time desc;");
+	        	</php>
+	        	<ul class="list-unstyled tc-photos margin-bottom-30">
+	        		<foreach name="last_users" item="vo">
+                    <li>
+	                    <a href="{:leuu('user/index/index',array('id'=>$vo['id']))}">
+	                    <img alt="" src="{:U('user/public/avatar',array('id'=>$vo['id']))}">
+	                    </a>
+                    </li>
+                    </foreach>
+                </ul>
+			</div>
+			
+			<div class="tc-box">
+	        	<div class="headtitle">
+	        		<h2>最新发布</h2>
+	        	</div>
+	        	<php>
+					$last_post=sp_sql_gongsi("cid:$cat_id;field:gname,resume,id,smeta;order:id DESC;limit:4;"); 
+				</php>
+	        	<div class="posts">
+	        		<foreach name="last_post" item="vo">
+	        		<php>$smeta=json_decode($vo['smeta'],true);</php>
+			        	<dl class="dl-horizontal">
+				            <dt>
+					            <a class="img-wraper" href="{:leuu('article/index',array('id'=>$vo['tid']))}">
+					            	<if condition="empty($smeta['thumb'])"> 
+										<img src="__TMPL__Public/images/default_tupian4.png" class="img-responsive" alt="{$vo.post_title}"/>
+									<else /> 
+										<img src="{:sp_get_asset_upload_path($smeta['thumb'])}" class="img-responsive img-thumbnail" alt="{$vo.post_title}" />
+									</if>
+					            </a>
+				            </dt>
+				            <dd><a href="{:leuu('article/index',array('id'=>$vo['tid']))}">{:msubstr($vo['gname'],0,32)}</a></dd>
+				        </dl>
+			        </foreach>
+		        </div>
+			</div>
+			
+			<php>$ad=sp_getad("portal_list_right_aside");</php>
+			<if condition="!empty($ad)">
+        	<div class="tc-box">
+	        	<div class="headtitle">
+	        		<h2>赞助商</h2>
+	        	</div>
+	        	<div>
+		        	{$ad}
+		        </div>
+			</div>
+			</if>
+		</div>
+    </div>
+    
+    
+    <tc_include file="Public:footer" />
+</div>
+
+    
+<!-- JavaScript -->
+<tc_include file="Public:scripts" />
+</body>
+</html>

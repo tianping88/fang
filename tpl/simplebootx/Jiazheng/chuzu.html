@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+	<html>
+	<head>
+		<title>{$title} {$site_name} </title>
+		<meta name="keywords" content="{$term['name']}" />
+		<meta name="description" content="{$title},{:msubstr(strip_tags($resume),0,200)}">
+		<tc_include file="Public:head" />
+		
+	</head>
+<body>
+
+<tc_include file="Public:nav" />
+<div class="container">
+	<div class="row">
+                <div class="col-md-12" style="margin-top: 20px;">
+                <ol class="breadcrumb">
+                
+                
+              <li><i class="fa fa-home fa-lg" style="font-size: 18px;line-height:16px;"></i><a href="__ROOT__">永川租房网</a></li>
+              <volist name="path" id="m" >
+                <li><a href="{$m.url}">{$m.title}</a></li>
+              </volist>
+              
+             
+            </ol>    
+                
+                </div>
+		<div class="col-md-12">
+			
+			<div class="row">
+            <div class="col-md-12">
+                    
+                                
+                    <h2>{$title}</h2>
+                    
+                    <p class="text-left" style="color: #999;"><span style="margin-right: 5px;">房源编号：{$eid}</span><span>更新时间：{$update_time|date="Y年m月d日 H时i分",###} </span>
+        		    		<span>
+        		    			<i class="fa fa-eye"></i><span>{$hits}</span>
+        						<a href="{:leuu('index/do_like',array('eid'=>$eid))}" class="J_count_btn"><i class="fa fa-thumbs-up"></i><span class="count">{$likes}</span></a>
+        			    		</span></p>
+                            
+                            
+                    
+            
+            </div>
+            <php>
+            $pricetype_temp=C('pricetype');
+            $paytype_temp=C('paytype');
+            $serveritem_temp=C('serveritem');
+            $zhuangxiu_temp=C('zhuangxiu');
+            $xueliarr=C('XUELI');
+            $jingyanarr=C("jingyan");
+            $xiujiaarr=C("xiujia");
+            $caoxiangarr=C("caoxiang");
+            </php>
+            
+            
+            
+		    <div class="col-md-12">
+		    <div class="panel panel-default" style="padding: 15px;">	
+               
+                <div class="pull-right">
+                
+                <if condition="empty($photo)">
+				<img src="__ROOT__/statics/images/personnoimg.jpg" id='thumb_preview' width='200' height='200' style='cursor:hand' />
+			<else/>
+				<img src="{:sp_get_asset_upload_path($photo)}" width='200' class="img_responsive img-rounded img-polaroid" /></if>
+                </div>
+                <div class="pull-left">
+                        <dl class="dl-horizontal infolist">                            
+                            <dt>出租租金</dt>
+                            
+                            <dd><span style="font-size: 2em;color:red;">{$zj}</span>{$pricetype_temp[$pricetype]}[{$paytype_temp['house'][$paytype]}]</dd>
+                            <dt>房屋概况</dt>
+                            <dd><span>{$serveritem_temp[$serveritem]}</span>
+                            <span>{$hxs}室{$hxt}厅{$hxw}卫</span>
+                            <span>{$mj}平米</span>
+                            <span>{$lc}/{$lcall}层</span>
+                            <span>朝{$caoxiangarr[$caoxiang]}</span>
+                            <span>{$zhuangxiu_temp[$zhuangxiu]}</span>
+                            </dd>
+                            
+                            <dt>所在区域</dt>
+                            <dd>
+                            <if condition="!empty($areaid)">
+                                <a href="{:leuu('jiazheng/index/fangyuan',array('id'=>"$serveritem-$areaid-0-0-0-0-0-0"))}" title="查看{$distname}租房信息">{$distname}</a>
+                                
+                            <else />
+                              {$distname}  
+                            </if>
+                            <if condition="!empty($xqid)">
+                            <span>/</span>                            
+                                <a href="{:leuu('jiazheng/index/fangyuan',array('id'=>"$serveritem-$areaid-0-0-0-0-$xqid-0"))}" title="查看{$xqname}房源信息">{$xqname}</a>
+                            </if>
+                            
+                            </dd>
+                            <dt>租房地址</dt>
+                            <dd>{$address}</dd>
+                            <dt><i class="fa fa-phone"></i>Tel</dt>
+                            <dd>{$ephone}({$ename})</dd>
+                            </dl>
+                
+                </div>
+                <div class="clearfix"></div>
+                <div class="text-center">
+                <button type="button" class="btn btn-yuyue btn-lg" data-toggle="modal" data-target="#orderModal">马上预约</button>                
+                </div>
+                
+                
+               
+    
+            
+             <php>
+             //根据字段字，从配置文件的数组中获取数据
+             
+             function strtostr($config_name,$input_name){
+                
+                $c=C($config_name);
+             $mye=explode(',',$input_name);
+             $str=array();
+             foreach($mye as $v)
+             {
+                $str[]=$c["$v"];
+                }
+                echo implode(",",$str);
+                }
+             </php>
+            
+  
+                </div>
+                <h3><span class="caret"></span>房源描述</h3>               
+               <div class="panel panel-default">
+               <div class="panel-body">
+               {$resume}</div>
+               </div>
+                
+                <h3><span class="caret"></span>配套设施</h3>
+                 
+                
+                <div class="panel panel-default">
+                <php>
+                $peitao_temp=C('peitao');
+                $housefield=C('housefield');
+                $housefield=$housefield[$serveritem];
+                $peitao_temp=$peitao_temp[$housefield];
+                $mypeitao=explode(',',$peitao);
+                </php>
+                <div class="panel-body">
+                <volist name="peitao_temp" id="p" >
+                <span class="label {:in_array($key,$mypeitao)?'label-success':'label-default'}" style="margin-right: 5px;">{$p}{:in_array($key,$mypeitao)?'<i class="glyphicon glyphicon-ok"></i>':''}</span>              
+                
+                      
+                </volist>
+                </div>
+                </div>
+                
+                <h3><span class="caret"></span>房源图片</h3>               
+               <div class="panel panel-default">
+               <div class="panel-body">
+               <foreach name="smeta" item="vo">
+				        
+                            <img src="{:sp_get_asset_upload_path($vo['url'])}" class="img-thumbnail img-responsive"  />
+                            <p>{$vo.alt}</p>
+				        
+			        </foreach>
+               
+               </div>
+               </div>
+                
+                <!---------------------------附近小区房源信息---------------------------->
+                <h3><span class="caret"></span>{$xqname}附近租房</h3>               
+               <div class="panel panel-default">
+               <div class="panel-body">
+               
+               <ul class="unstyled list-inline">
+               <foreach name="fujin" item="vo">
+				        <li>
+                        <a href="__ROOT__/zufang/{$serveritem}-{$areaid}-0-0-0-0-{$vo.id}-0.html" title="查看{$vo.name}房源信息">{$vo.name}</a></li>
+			        </foreach>
+               </ul>
+               
+               </div>
+               </div>
+               
+               
+                
+                </div>
+               
+		    <div class="clearfix"></div>
+                
+		    	<div class="col-md-12">
+                    <div class="panel panel-default" style="padding: 15px;">
+                           <if condition="!empty($prev)">
+					<a href="{:leuu('info',array('eid'=>$prev['eid']))}" class="btn btn-primary pull-left" style="top: 50%;position: relative;">上一位</a>
+					</if>
+					<if condition="!empty($next)">
+					<a href="{:leuu('info',array('eid'=>$next['eid']))}" class="btn btn-warning pull-right">下一位</a>
+					</if>
+    	            <script type="text/javascript" src="__TMPL__Public/js/qrcode.min.js"></script>
+                    <div id="qrcode" style="width: 100px;margin:0 auto"></div>
+    					<script type="text/javascript">
+                        var qrcode = new QRCode(document.getElementById("qrcode"), {
+                        width : 100,
+                        height : 100
+                        });
+                        function makeCode () {		
+                        qrcode.makeCode("http://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
+                        }
+                        makeCode();
+                        </script>     
+                    
+                    </div>
+					
+					<div class="clearfix"></div>
+                    
+				</div>
+               
+               
+		    	
+	    </div>
+	    
+   
+			
+		    
+		</div>		
+		
+	</div>
+ </div>             
+<tc_include file="Public:footer"/>
+
+
+
+
+<!-----------------------模态框--------------------------->
+<!-- Modal -->
+<div class="modal fade" id="orderModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">{$term['name']}服务预约</h4>
+      </div>
+      <div class="modal-body">
+        <form class="J_ajaxForm" action="{:leuu('jiazheng/order/addorder')}" method="post">
+          <div class="form-group">
+            <label for="cname" class="control-label">联系人名称</label>            
+            <input type="text" class="form-control" required id="cname" name="cname" />
+            
+          </div>
+          <div class="form-group">
+            <label for="address" class="control-label">家庭住址</label>
+            
+            <input type="text" class="form-control" required id="address" name="address" />
+           
+          </div>
+          <div class="form-group">
+            <label for="phone" class="control-label">联系电话</label>
+            
+            <input type="text" class="form-control" required id="phone" name="phone" />
+            
+          </div>         
+            <php>$curdate=date("Y-m-d H:i",time());</php>
+            
+          <div class="form-group">
+                <label class="control-label">上门时间</label>
+                
+                <div class="input-append date form_datetime" data-date="{$curdate}" data-date-format="yyyy-mm-dd HH:ii" data-link-field="dtp_input1">
+                    <input class="form-control" type="text" value="{$curdate}" readonly>
+                    <span class="add-on"><i class="icon-remove"></i></span>
+					<span class="add-on"><i class="icon-th"></i></span>
+                </div>
+                
+				<input type="hidden" id="dtp_input1" name="startdate" value="" /><br/>
+            </div>
+          <div class="form-group">
+            <label for="remark" class="control-label">其它说明</label>
+            <div class="controls">
+            <textarea class="form-control" id="remark" name="remark"></textarea>
+            </div>
+          </div>
+          <input type="hidden" name="item" value="{$termid}"/>
+          <input type="hidden" name="ename" value="{$ename}"/>
+          <input type="hidden" name="userid" value="{:get_current_userid()}"/>
+          <input type="hidden" name="eid" value="{$eid}"/>
+          <div class="form-group">          
+                <button class="btn btn-primary J_ajax_submit_btn btn-success" type="submit">提交预订</button>
+                
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!----------------------------------------->
+
+<tc_include file="Public:scripts"/>
+ <script src="__ROOT__/statics/js/bootstrap-datetimepicker.min.js"></script>
+  <script src="__ROOT__/statics/js/bootstrap-datetimepicker.zh-CN.js"></script>
+  <script type="text/javascript">
+    $('.form_datetime').datetimepicker({
+        language:  'zh-CN',
+        weekStart: 1,
+        todayBtn:  'linked',
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		forceParse: 0,
+        showMeridian: 1
+    });
+	
+</script>
+ 
+</body>
+</html>

@@ -1,0 +1,161 @@
+[ 2016-06-18T10:25:32+08:00 ] 127.0.0.1 /fang/Asset/Area/search.html?xqname=%E6%98%9F%E6%98%9F
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `sp_jz_area` [ RunTime:0.0020s ]
+SQL: SELECT `id`,`name`,`address` FROM `sp_jz_area` WHERE `name` LIKE '%星星%' LIMIT 10   [ RunTime:0.0190s ]
+
+[ 2016-06-18T10:25:33+08:00 ] 127.0.0.1 /fang/Asset/Area/search.html?xqname=%E6%98%9F%E6%98%9F%E5%AE%9D%E7%9B%88%E5%9F%BA%E9%87%91
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `sp_jz_area` [ RunTime:0.0020s ]
+SQL: SELECT `id`,`name`,`address` FROM `sp_jz_area` WHERE `name` LIKE '%星星宝盈基金%' LIMIT 10   [ RunTime:0.0000s ]
+
+[ 2016-06-18T10:25:36+08:00 ] 127.0.0.1 /fang/Asset/Area/search.html?xqname=%E6%98%9F%E6%98%9F%E5%AE%B6aqb
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+SQL: SHOW COLUMNS FROM `sp_jz_area` [ RunTime:0.0020s ]
+SQL: SELECT `id`,`name`,`address` FROM `sp_jz_area` WHERE `name` LIKE '%星星家aqb%' LIMIT 10   [ RunTime:0.0000s ]
+
+[ 2016-06-18T10:25:36+08:00 ] 127.0.0.1 /fang/Asset/Area/search.html?xqname=%E6%98%9F%E6%98%9F%E5%AE%B6%E8%8B%91
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `sp_jz_area` [ RunTime:0.0020s ]
+SQL: SELECT `id`,`name`,`address` FROM `sp_jz_area` WHERE `name` LIKE '%星星家苑%' LIMIT 10   [ RunTime:0.0000s ]
+
+[ 2016-06-18T10:25:47+08:00 ] 127.0.0.1 /fang/Asset/Area/search.html?xqname=%E5%AE%B6
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `sp_jz_area` [ RunTime:0.0020s ]
+SQL: SELECT `id`,`name`,`address` FROM `sp_jz_area` WHERE `name` LIKE '%家%' LIMIT 10   [ RunTime:0.0000s ]
+
+[ 2016-06-18T10:26:05+08:00 ] 127.0.0.1 /fang/Asset/Area/search.html?xqname=%E5%B1%B1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `sp_jz_area` [ RunTime:0.0020s ]
+SQL: SELECT `id`,`name`,`address` FROM `sp_jz_area` WHERE `name` LIKE '%山%' LIMIT 10   [ RunTime:0.0000s ]
+
+[ 2016-06-18T10:29:07+08:00 ] 127.0.0.1 /fang/Asset/Area/search.html?xqname=%E6%9C%88
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `sp_jz_area` [ RunTime:0.0020s ]
+SQL: SELECT `id`,`name`,`address` FROM `sp_jz_area` WHERE `name` LIKE '%月%' LIMIT 10   [ RunTime:0.0000s ]
+
+[ 2016-06-18T10:35:35+08:00 ] 127.0.0.1 /fang/Asset/Area/search.html?xqname=%E5%B0%8F&distid=46490
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `sp_jz_area` [ RunTime:0.0020s ]
+SQL: SELECT `id`,`name`,`address` FROM `sp_jz_area` WHERE `name` LIKE '%小%' AND `distid` = 46490 LIMIT 10   [ RunTime:0.0000s ]
+
+[ 2016-06-18T10:35:39+08:00 ] 127.0.0.1 /fang/Asset/Area/search.html?xqname=pe&distid=46490
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `sp_jz_area` [ RunTime:0.0030s ]
+SQL: SELECT `id`,`name`,`address` FROM `sp_jz_area` WHERE `name` LIKE '%pe%' AND `distid` = 46490 LIMIT 10   [ RunTime:0.0000s ]
+
+[ 2016-06-18T10:35:39+08:00 ] 127.0.0.1 /fang/Asset/Area/search.html?xqname=%E5%AE%B6&distid=46490
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `sp_jz_area` [ RunTime:0.0020s ]
+SQL: SELECT `id`,`name`,`address` FROM `sp_jz_area` WHERE `name` LIKE '%家%' AND `distid` = 46490 LIMIT 10   [ RunTime:0.0000s ]
+
+[ 2016-06-18T10:35:45+08:00 ] 127.0.0.1 /fang/Asset/Area/search.html?xqname=%E6%B0%B4&distid=46470
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `sp_jz_area` [ RunTime:0.0020s ]
+SQL: SELECT `id`,`name`,`address` FROM `sp_jz_area` WHERE `name` LIKE '%水%' AND `distid` = 46470 LIMIT 10   [ RunTime:0.0000s ]
+
+[ 2016-06-18T10:36:32+08:00 ] 127.0.0.1 /fang/Asset/Area/search.html?xqname=%E8%82%96&distid=46470
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `sp_jz_area` [ RunTime:0.0020s ]
+SQL: SELECT `id`,`name`,`address` FROM `sp_jz_area` WHERE `name` LIKE '%肖%' AND `distid` = 46470 LIMIT 10   [ RunTime:0.0000s ]
+
+[ 2016-06-18T10:36:34+08:00 ] 127.0.0.1 /fang/Asset/Area/search.html?xqname=%E8%82%96qa&distid=46470
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `sp_jz_area` [ RunTime:0.0020s ]
+SQL: SELECT `id`,`name`,`address` FROM `sp_jz_area` WHERE `name` LIKE '%肖qa%' AND `distid` = 46470 LIMIT 10   [ RunTime:0.0000s ]
+
+[ 2016-06-18T10:36:35+08:00 ] 127.0.0.1 /fang/Asset/Area/search.html?xqname=%E8%82%96%E6%B0%8F&distid=46470
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `sp_jz_area` [ RunTime:0.0020s ]
+SQL: SELECT `id`,`name`,`address` FROM `sp_jz_area` WHERE `name` LIKE '%肖氏%' AND `distid` = 46470 LIMIT 10   [ RunTime:0.0000s ]
+
+[ 2016-06-18T10:36:36+08:00 ] 127.0.0.1 /fang/Asset/Area/search.html?xqname=%E8%82%96%E6%B0%8F%E9%A5%AD&distid=46470
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `sp_jz_area` [ RunTime:0.0020s ]
+SQL: SELECT `id`,`name`,`address` FROM `sp_jz_area` WHERE `name` LIKE '%肖氏饭%' AND `distid` = 46470 LIMIT 10   [ RunTime:0.0000s ]
+
+[ 2016-06-18T10:36:37+08:00 ] 127.0.0.1 /fang/Asset/Area/search.html?xqname=%E8%82%96%E6%B0%8F%E9%A5%AD%E5%BA%8A&distid=46470
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `sp_jz_area` [ RunTime:0.0030s ]
+SQL: SELECT `id`,`name`,`address` FROM `sp_jz_area` WHERE `name` LIKE '%肖氏饭床%' AND `distid` = 46470 LIMIT 10   [ RunTime:0.0000s ]
+
+[ 2016-06-18T10:36:39+08:00 ] 127.0.0.1 /fang/Asset/Area/search.html?xqname=%E8%82%96%E6%B0%8F%E9%A5%AD%E8%84%8F&distid=46470
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `sp_jz_area` [ RunTime:0.0020s ]
+SQL: SELECT `id`,`name`,`address` FROM `sp_jz_area` WHERE `name` LIKE '%肖氏饭脏%' AND `distid` = 46470 LIMIT 10   [ RunTime:0.0000s ]
+
+[ 2016-06-18T10:36:41+08:00 ] 127.0.0.1 /fang/Asset/Area/search.html?xqname=%E8%82%96%E6%B0%8F%E9%A5%AD%E8%AF%97&distid=46470
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `sp_jz_area` [ RunTime:0.0020s ]
+SQL: SELECT `id`,`name`,`address` FROM `sp_jz_area` WHERE `name` LIKE '%肖氏饭诗%' AND `distid` = 46470 LIMIT 10   [ RunTime:0.0010s ]
+
+[ 2016-06-18T10:36:43+08:00 ] 127.0.0.1 /fang/Asset/Area/search.html?xqname=%E8%82%96%E6%B0%8F%E9%A5%AD%E5%BA%84&distid=46470
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `sp_jz_area` [ RunTime:0.0020s ]
+SQL: SELECT `id`,`name`,`address` FROM `sp_jz_area` WHERE `name` LIKE '%肖氏饭庄%' AND `distid` = 46470 LIMIT 10   [ RunTime:0.0000s ]
+
+[ 2016-06-18T10:38:17+08:00 ] 127.0.0.1 /fang/Asset/Sms/send.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007001s ]
+SQL: SHOW COLUMNS FROM `sp_common_action_log` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sp_common_action_log` WHERE `object` = '13452048245' AND `ip` = '127.0.0.1' LIMIT 1   [ RunTime:0.0010s ]
+SQL: UPDATE `sp_common_action_log` SET `count`='1',`action`='894939',`last_time`='1466217497',`ip`='127.0.0.1' WHERE `object` = '13452048245' AND `ip` = '127.0.0.1' [ RunTime:0.0040s ]
+

@@ -1,0 +1,86 @@
+<admintpl file="header" />
+<body class="J_scroll_fixed">
+	<div class="wrap">
+	                                   <form action="{:u('add_gongsi')}" method="post" class="form-horizontal J_ajaxForm">
+ 
+                                            <div class="control-group">
+                                   				<label class="control-label" for="input-user_nicename">服务项目</label>
+                                   				<div class="controls">
+                                   					<select style="max-height: 100px;" name="item">
+                                    					{$taxonomys}
+                                    				</select>
+                                   				</div>
+                                   			</div>
+                                            <div class="control-group">
+                                   				<label class="control-label" for="input-user_nicename">公司名称</label>
+                                   				<div class="controls">
+                                   					<input type="text" name="gname" id="title"  required value="" style="color:" class="input input_hd J_title_color" placeholder="请输入联系人姓名" onkeyup="strlen_verify(this, 'title_len', 20)" />
+                                   				</div>
+                                   			</div>
+                                            <div class="control-group">
+                                   				<label class="control-label" for="input-user_nicename">公司地址</label>
+                                   				<div class="controls">
+                                   					<input type='text' name='address' id='keywords' required value='' class='input' placeholder='请输入地址'>
+                                   				</div>
+                                   			</div>
+                                            <div class="control-group">
+                                   				<label class="control-label" for="input-user_nicename">联系电话</label>
+                                   				<div class="controls">
+                                   					<input type='text' name='gphone' id='source' required value='' class='input' placeholder='请输入手机号'>
+                                   				</div>
+                                   			</div>
+                                            <div class="control-group">
+                                   				<label class="control-label" for="input-user_nicename">公司成立时间</label>
+                                   				<div class="controls">
+                                   					<input type="text" name="createdate" id="updatetime" value="{:date('Y-m-d',time())}" size="21" class="input length_3 J_datetime" style="width: 160px;">
+                                   				</div>
+                                   			</div>
+                                            <div class="control-group">
+                                   				<label class="control-label" for="input-user_nicename">服务项目</label>
+                                   				<div class="controls">
+                                   					<textarea name='service' style='width:50%;height:100px;' placeholder=''></textarea>
+                                   				</div>
+                                   			</div>
+                                            <div class="control-group">
+                                   				<label class="control-label" for="input-user_nicename">QQ</label>
+                                   				<div class="controls">
+                                   					<input type='text' name='qq' id='source'  value='' style='width:100px'   class='input' placeholder=''>
+          /微信<input type='text' name='weixin' id='source'  value='' style='width:100px'   class='input' placeholder=''>
+                                   				</div>
+                                   			</div>
+                                            <div class="control-group">
+                                   				<label class="control-label" for="input-user_nicename">乘车路线</label>
+                                   				<div class="controls">
+                                   					<input type='text' name='luxian' id='source' value='' class='input' placeholder='' />
+                                   				</div>
+                                   			</div>
+                                            <div class="control-group">
+                                   				<label class="control-label" for="input-user_nicename">公司简历</label>
+                                   				<div class="controls">
+                                   					<textarea name='resume' style='width:50%;height:100px;' placeholder=''></textarea>
+                                   				</div>
+                                   			</div>
+                                            <div class="control-group">
+                                   				<label class="control-label" for="input-user_nicename">公司LOGO</label>
+                                   				<div class="controls">
+                                   					<input type='hidden' name='logo' id='thumb' value='' />
+			<a href='javascript:void(0);' onclick="flashupload('thumb_images', '附件上传','thumb',thumb_images,'1,jpg|jpeg|gif|png|bmp,1,,,1','','','');return false;">
+			<img src='__ROOT__/statics/images/icon/upload-pic.png' id='thumb_preview' width='135' height='113' style='cursor:hand' /></a>
+			
+            <input type="button"  class="btn" onclick="$('#thumb_preview').attr('src','__ROOT__/statics/images/icon/upload-pic.png');$('#thumb').val('');return false;" value="取消图片">
+                                   				</div>
+                                   			</div>
+                                               <div class="control-group">
+                                   				<div class="controls">
+                                                    <input type="hidden" name="uid" value="{:sp_get_current_userid()}" />
+                                                    <input type="hidden" name="create_time" value="{:date('Y-m-d H:m:s',time())}" />
+                                   					<button type="submit" class="btn J_ajax_submit_btn">保存</button>
+                                   				</div>
+                                   			</div>    
+ 
+                                              
+ </form>
+                                   </div>
+	<script src="__ROOT__/statics/js/common.js"></script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<admintpl file="header" />
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.2"></script>
+<body class="J_scroll_fixed">
+	<div class="container">
+    <div class="row">
+		<ul class="nav nav-tabs">
+			<li ><a href="{:U('Area/index')}">小区列表</a></li>
+			<li><a href="{:U('Area/add')}">添加</a></li>
+            <li class="active"><a>修改</a></li>
+		</ul>
+        <div class="clearfix" style="margin-top: 10px;"></div>
+		
+			<form method="post" class="form-horizontal J_ajaxForm" action="{:U('Area/edit_post')}">
+				
+                    <div class="form-group">
+						<label class="control-label col-md-2">所在区域:</label>
+						<div class="col-md-3">
+							<select name="distid" class="form-control">
+											
+											{$city_tree}
+									</select>
+							
+						</div>
+                        <label class="control-label col-md-2">类别<span class="must_red">*</span>:</label>
+						<div class="col-md-3">
+							<select name="catid" class="form-control normal_select">
+                                            <option value="0">请选择</option>
+											<option value="1" {$catid==1?'selected':''}>小区</option>
+											<option value="2" {$catid==2?'selected':''}>商圈</option>
+									</select>
+							
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-md-2">名称:</label>
+						<div class="col-md-3">
+							<input type="text" class="form-control" required name="name" value="{$name}">
+							
+							<input type="hidden" name="id" value="{$id}">
+						</div>
+                        <label class="control-label col-md-2">地址:</label>
+						<div class="col-md-3">
+							<input type="text" class="form-control" name="address" value="{$address}">
+							
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-md-2">拼音/首字母:</label>
+						<div class="col-md-3">
+							<input type="text" class="form-control" name="pinyin" value="{$pinyin}">
+						</div>
+                        <div class="col-md-3">
+							<input type="text" class="form-control" name="firstchar" value="{$firstchar}">
+						</div>
+				</div>
+					<div class="form-group">
+						<label class="control-label col-md-2">经度/纬度:</label>
+						<div class="col-md-3">
+							
+							<input type="text" id="lng" class="form-control" name="lng" value="{$lng}">
+						</div>
+                        <div class="col-md-3">
+							
+							<input type="text" id="lat" class="form-control" name="lat" value="{$lat}">
+						</div>
+					</div>	
+					
+					<div class="form-group">
+						<label class="control-label col-md-2">描述:</label>
+						<div class="col-md-10">
+							<textarea class="form-control" name="desc" rows="4" >{$desc}</textarea>
+						</div>
+					</div>
+				
+				<div class="form-group">
+                <div class="col-md-10 col-md-offset-2">
+					<button type="submit"	class="btn btn-info btn_submit J_ajax_submit_btn">更新</button>
+					<a class="btn" href="{:I('session.jumpUrl_area_list')}">返回</a>
+                    <input type="checkbox" name="savelbs" value="yes" checked="checked" />缓存当前坐标方便下一编辑
+                    </div>
+				</div>
+                <div class="form-group">
+                <div class="col-md-12" id="container" style="height: 540px;border:1px solid gray"></div>
+                </div>
+                
+                
+			</form>
+		</div>
+	</div>
+	<script src="__ROOT__/statics/js/common.js"></script>
+</body>
+</html>
+<script type="text/javascript">
+var map = new BMap.Map("container");
+                        // 创建Map实例
+ var lng={$centerlng};
+ var lat={$centerlat};
+ var _initPoint='';
+ 
+     _initPoint= new BMap.Point(parseFloat(lng),parseFloat(lat));
+     marker = new BMap.Marker(_initPoint);  // 创建标注
+      map.addOverlay(marker);   
+map.centerAndZoom(_initPoint,20);// 初始化地图,设置中心点坐标和地图级别
+//setTimeout(function(){
+//        map.setCenter(_initPoint);
+//      }, 200);     
+map.enableScrollWheelZoom();
+      map.enableKeyboard();
+      map.enableDragging();
+      
+var key = 1;    //开关
+var newpoint;   //一个经纬度
+var points = [];    //数组，放经纬度信息
+var polyline = new BMap.Polyline(); //折线覆盖物
+
+
+map.addEventListener("click",function(e){   //单击地图，形成折线覆盖物
+    newpoint = new BMap.Point(e.point.lng,e.point.lat);
+    
+    //    if(points[points.length].lng==points[points.length-1].lng){alert(111);}
+        points.push(newpoint);  //将新增的点放到数组中
+        polyline.setPath(points);   //设置折线的点数组
+        map.addOverlay(polyline);   //将折线添加到地图上
+        document.getElementById("lng").value=  e.point.lng;    //输出数组里的经纬度
+        document.getElementById("lat").value=  e.point.lat;
+    
+});
+map.addEventListener("dblclick",function(e){   //双击地图，形成多边形覆盖物
+
+        map.disableDoubleClickZoom();   //关闭双击放大
+var polygon = new BMap.Polygon(points);
+        map.addOverlay(polygon);   //将折线添加到地图上
+    
+});
+</script>

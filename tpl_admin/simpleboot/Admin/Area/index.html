@@ -1,0 +1,64 @@
+<admintpl file="header" />
+<body class="J_scroll_fixed">
+	<div class="wrap J_check_wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('Area/index')}">小区列表</a></li>
+			<li><a href="{:U('Area/add')}">添加</a></li>
+		</ul>
+		
+		
+			
+			<table class="table table-hover table-bordered table-list">
+				<thead>
+					<tr>
+						<th width="16"><label><input type="checkbox" class="J_check_all" data-direction="x" data-checklist="J_check_x"></label></th>
+						
+						<th width="50">ID</th>
+						<th>名称</th>
+						<th>所在区域</th>
+                        <th>分类</th>
+                        <th>拼音</th>
+						<th >地址</th>
+                        <th >位置</th>
+						<th width="120">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<foreach name="areas" item="vo">
+					<tr>
+						<td><input type="checkbox" class="J_check" data-yid="J_check_y" data-xid="J_check_x" name="ids[]" value="{$vo.id}"></td>
+						
+						<td>{$vo.id}</td>
+						<td>{$vo.name}</td>
+						<td><a href="{:U('Area/index',array('distid'=>$vo[distid]))}">{$vo.dname}</a></td>
+                        <td>{$vo.catid}</td>
+                        <td>{$vo.firstchar}/{$vo.pinyin}</td>
+						<td>{$vo.address}</td>
+                        <td>{$vo.lng},{$vo.lat}</td>
+                        
+						<td>
+							<a href="{:U('area/edit',array('id'=>$vo['id']))}">修改</a>|
+							<a href="{:U('area/delete',array('id'=>$vo['id']))}" class="J_ajax_del">删除</a>
+						</td>
+					</tr>
+					</foreach>
+				</tbody>
+				<tfoot>
+					<tr>
+						<th width="16"><label><input type="checkbox" class="J_check_all" data-direction="x" data-checklist="J_check_x"></label></th>
+						
+						<th width="50">ID</th>
+						<th>名称</th>
+						<th>所在区域</th>
+						<th>地址</th>
+                        <th >位置</th>
+						<th width="120">操作</th>
+					</tr>
+				</tfoot>
+			</table>
+		<div class="pagination">{$page}</div>
+		
+	</div>
+	<script src="__ROOT__/statics/js/common.js?"></script>
+</body>
+</html>

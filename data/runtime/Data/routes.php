@@ -1,0 +1,1 @@
+a:3:{s:25:"jiazheng/index/postzufang";a:1:{i:0;a:2:{s:5:"query";a:0:{}s:3:"url";s:10:"zufangfabu";}}s:23:"jiazheng/index/fangyuan";a:1:{i:0;a:2:{s:5:"query";a:0:{}s:3:"url";s:19:"yongchuanzufang/:id";}}s:20:"jiazheng/index/chuzu";a:1:{i:0;a:2:{s:5:"query";a:0:{}s:3:"url";s:10:"chuzu/:eid";}}}

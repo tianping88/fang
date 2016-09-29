@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<php>
+$title=gentitle();
+</php>
+	<title>{$title}_第{:I('get.p',1)}页_{$site_name}</title>
+	<meta name="keywords" content="{$title}" />
+	<meta name="description" content="{$title}" />
+    <tc_include file="Public:head" />
+</head>
+<body>
+<tc_include file="Public:nav" />
+<section id="social-buttons">
+<div class="container">
+    <div class="row">
+    
+    <div class="col-md-12">
+    <ol class="breadcrumb">
+    
+  <li><i class="fa fa-home fa-lg" style="font-size: 18px;line-height:16px;"></i><a href="/">永川租房网</a></li>
+  
+ <volist name="path" id="m" >
+                <li><a href="{$m.url}">{$m.title}</a></li>
+              </volist>
+</ol>    
+    
+    </div>
+    </div>
+</div>
+</section>
+<div class="container">
+ <php>
+        $housefield=C('housefield');
+        $housefield=$housefield[$cat_id];
+        $housetype=C('housetype');
+        $housetype=$housetype[$housefield];
+        
+        $leibie=C('leibie');
+        $leibie=$leibie[$housefield];
+        $caoxiang=C('caoxiang');
+        $serveritemarr=C('serveritem');
+        $pricetypearr=C('pricetype');
+        $officegradearr=C('officegrade');
+        </php>  	
+	
+    
+    
+    <div class="row" >
+		<div class="col-md-9">
+		      <div class="row">
+              <div class="col-md-12">
+              <div class="panel panel-default" style="padding: 15px;">
+              
+              <h3>永川租房条件筛选</h3>      
+              
+              </dl>
+              <!----------------------------区域--1-------------------------------->     
+              <dl class="dl-horizontal keynav">
+              <dt class="badge">租房区域</dt>
+              <dd>
+              <if condition="checkme(1,0)"><a href="{:genparam(1,0)}" class="bg-primary">不限</a><else /><a href="{:genparam(1,0)}" class="bg-info">不限</a></if>          
+                           
+              <volist name=":getcity('0')" id="s">              
+              <if condition="checkme(1,$s['pinyin'])">
+              <a href="{:genparam(1,$s['pinyin'])}" class="bg-primary">{$s.shortname}</a>
+              <else />
+              <a href="{:genparam(1,$s['pinyin'])}">{$s.shortname}</a>
+              </if>    
+              
+              </volist>  
+              </dd>           
+              </dl>    
+              <!----------------------------方式--5--------------------------------> 
+          
+               <dl class="dl-horizontal keynav">
+              <dt class="badge">租房方式</dt>
+              <dd>
+              <if condition="checkme(5,0)"><a href="{:genparam(5,0)}" class="bg-primary">不限</a><else /><a href="{:genparam(5,0)}" class="bg-info">不限</a></if>           
+                            
+              <volist name="leibie" id="s">
+             
+              <if condition="checkme(5,$key)">
+              <a href="{:genparam(5,$key)}" class="bg-primary">{$s}</a>
+              <else />
+              <a href="{:genparam(5,$key)}">{$s}</a>
+              </if>           
+              
+              </volist>   
+              </dd>          
+              </dl> 
+          
+          <!----------------------------户型--2--------------------------------> 
+          <if condition="checkme(0,1)">
+             <!-----------整租户型------------>
+             <php>
+             if(checkme(5,2)){
+                
+             </php>
+             
+             
+                    <dl class="dl-horizontal keynav">
+                  <dt class="badge">合租房型</dt>
+                  <dd>
+                  <if condition="checkme(2,0)"><a href="{:genparam(2,0)}" class="bg-primary">不限</a>
+                  <else /><a href="{:genparam(2,0)}">不限</a>
+                  </if>              
+                              
+                  <volist name=":C('hzhx')" id="s">
+                  
+                  <if condition="checkme(2,$key)">
+                  <a href="{:genparam(2,$key)}" class="bg-primary">{$s}</a>
+                  <else />
+                  <a href="{:genparam(2,$key)}">{$s}</a>
+                  </if>
+                  
+                  
+                  </volist>   
+                  </dd>          
+                  </dl>
+             <php>}
+             else{
+             </php>
+             
+                  
+                <dl class="dl-horizontal keynav">
+                  <dt class="badge">租房户型</dt>
+                  <dd>
+                  <if condition="checkme(2,0)">
+                  <a href="{:genparam(2,0)}" class="bg-primary">不限</a>
+                  <else />
+                  <a href="{:genparam(2,0)}">不限</a>
+                  </if>              
+                              
+                  <volist name=":C('hx')" id="s">
+                  
+                  <if condition="checkme(2,$key)">
+                  <a href="{:genparam(2,$key)}" class="bg-primary">{$s}</a>
+                  <else />
+                  <a href="{:genparam(2,$key)}">{$s}</a>
+                  </if>
+                  
+                  
+                  </volist>   
+                  </dd>          
+                  </dl>
+               <php>}</php>
+          </if>    
+              
+              
+              <!----------------------------租金--3-------------------------------->     
+              <dl class="dl-horizontal keynav">
+              <dt class="badge">出租租金</dt>
+              <dd>
+              <if condition="checkme(3,0)"><a href="{:genparam(3,0)}" class="bg-primary">不限</a><else /><a href="{:genparam(3,0)}">不限</a></if>          
+                       
+              <volist name=":C('zujin')" id="s">
+              
+              <if condition="checkme(3,$key)">
+              <a href="{:genparam(3,$key)}" class="bg-primary">{$s}</a>
+              <else />
+              <a href="{:genparam(3,$key)}">{$s}</a>
+              </if>           
+              
+              </volist> 
+              </dd>            
+              </dl>
+              <!----------------------------商铺行业--3-------------------------------->     
+              <php>
+              if(checkme(0,3)){
+                </php>
+                <dl class="dl-horizontal keynav">
+              <dt class="badge">房屋行业</dt>
+              <dd>
+              <if condition="checkme(7,0)"><a href="{:genparam(7,0)}" class="bg-primary">不限</a><else /><a href="{:genparam(7,0)}">不限</a></if>          
+                       
+              <volist name=":C('shopfor')" id="s">
+              
+              <if condition="checkme(7,$key)">
+              <a href="{:genparam(7,$key)}" class="bg-primary">{$s}</a>
+              <else />
+              <a href="{:genparam(7,$key)}">{$s}</a>
+              </if>           
+              
+              </volist> 
+              </dd>            
+              </dl>
+                <php>
+              }
+              
+              </php>
+        <!----------------------------房源类型--4--------------------------------> 
+         
+               <dl class="dl-horizontal keynav">
+              <dt class="badge">房源类型</dt>
+             <dd>
+              <if condition="checkme(4,0)"><a href="{:genparam(4,0)}" class="bg-primary">不限</a><else /><a href="{:genparam(4,0)}">不限</a></if>     
+                           
+              <volist name="housetype" id="s">
+              
+              <if condition="checkme(4,$key)">
+              <a href="{:genparam(4,$key)}" class="bg-primary">{$s}</a>
+              <else />
+              <a href="{:genparam(4,$key)}">{$s}</a>
+              </if>
+              
+              
+              </volist>  
+              </dd>           
+              </dl>      
+                    
+             
+          
+              
+    </div>          
+              </div>
+              
+              </div>
+              
+              <php>
+                    $where=genwhere();//根据选项生成查询条件
+					$lists = sp_jz("serveritem:$cat_id;order:update_time desc,eid desc;",$where,9);
+                    
+                    
+             $empty='<p class="text-warning"><i class="glyphicon glyphicon-exclamation-sign"></i>暂无满足条件的租房数据</p>';       
+             //根据字段字，从配置文件的数组中获取数据
+             
+             function strtostr($config_name,$input_name){
+                
+                $c=C($config_name);
+             $mye=explode(',',$input_name);
+             $str=array();
+             foreach($mye as $v)
+             {
+                $str[]=$c["$v"];
+                }
+                echo implode(",",$str);
+                }
+             
+				</php>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                            <volist name="lists['posts']" id="vo" empty="$empty">
+                            <php>
+                            switch($vo['serveritem']){
+                                case '1':
+                            </php>
+                               <div class="row">
+                                      <div class="col-md-3">
+                                      <if condition="empty($vo['photo'])">
+                                      <img src="__ROOT__/statics/images/personnoimg.jpg" alt="{$vo.title}" class="img-rounded img-responsive" style="margin: 10px auto;" />
+                                      <else />
+                                      <img data-src="{$vo.photo}" src="{$vo.photo}" alt="{$vo.title}" class="img-rounded img-responsive" style="margin: 10px auto;" />
+                                      </if>
+                                      </div>
+                                      <div class="col-md-7"> 
+                                      <h3><a href="{:leuu('chuzu',array('eid'=>$vo['eid']))}">{$vo.title}</a></h3>
+                                       <ul class="list-inline " style="font-size: 18px;font-weight: bold;">                                        
+                                        
+                                        
+                                        <php>
+                                        if($vo['leibie']==='2'){
+                                        </php>
+                                        <li>{$leibie[$vo['leibie']]}{$vo.hzhx}</li>
+                                        <li>{$vo.hzcount}户合租</li>
+                                        <php>
+                                        }else{
+                                        </php>
+                                        <li>
+                                        {$leibie[$vo['leibie']]}
+                                        </li>
+                                        <li>{$vo.hxs}室{$vo.hxt}厅</li>
+                                        <php>
+                                        }
+                                        </php>
+                                                                                
+                                        
+                                        <li>{$vo.mj}㎡</li>
+                                        <li>{$vo.lc}/{$vo.lcall}层</li>
+                                        <li>朝{$caoxiang[$vo['caoxiang']]}</li>                                        
+                                        </ul> 
+                                        <p class="small">{$vo.xqname}</p> 
+                                        <p class="small">{$vo['update_time']|formatDate}更新</p>                            
+                                      
+                                    </div>
+                                    <div class="col-md-2 text-right" style="margin-top: 40px;">
+                                    <span style="font-size: 2em;color:red;">{$vo.zj}</span>元/月
+                                    </div>
+                                     </div> 
+                                     <hr />
+                            <php>
+                                break;                                
+                                case '2':</php>
+                                <div class="row">
+                                      <div class="col-md-3">
+                                      <if condition="empty($vo['photo'])">
+                                      <img src="__ROOT__/statics/images/personnoimg.jpg" alt="{$vo.title}" class="img-rounded img-responsive" style="margin: 10px auto;" />
+                                      <else />
+                                      <img data-src="{$vo.photo}" src="{$vo.photo}" alt="{$vo.title}" class="img-rounded img-responsive" style="margin: 10px auto;" />
+                                      </if>
+                                      </div>
+                                      <div class="col-md-7"> 
+                                      <h3><a href="{:leuu('chuzu',array('eid'=>$vo['eid']))}">{$vo.title}</a></h3>
+                                      <p>{$vo.xqname}<i class="glyphicon glyphicon-map-marker" style="margin-left: 5px;"></i>{$vo.address}</p>
+                                      <p>等级：{$officegradearr[$vo['officegrade']]}/所在楼层：{$vo.lc}/{$vo.lcall}层</p>
+                                       <ul class="list-inline " style="font-size: 18px;font-weight: bold;"> 
+                                        <li>{$vo.mj}㎡(建筑面积)</li>
+                                        
+                                                                               
+                                        </ul> 
+                                        
+                                        <p class="small">{$vo['update_time']|formatDate}更新</p>                            
+                                      
+                                    </div>
+                                    <div class="col-md-2 text-right" style="margin-top: 40px;">
+                                    <p><span style="font-size: 2em;color:red;">{$vo.zj}</span>{$pricetypearr[$vo['pricetype']]}</p>
+                                    <p>
+                                    <php>
+                                    $jiage='';
+                                    switch($vo['pricetype']){
+                                        case '1':
+                                        $jiage= $vo['zj']*$vo['mj']*30;
+                                        echo $jiage.'元/月';
+                                        break;
+                                        case '2':
+                                        $jiage= $vo['zj']*$vo['mj'];
+                                        echo $jiage.'元/月';
+                                    }
+                                    </php>
+                                    
+                                    </p>
+                                    </div>
+                                     </div> 
+                                     <hr />                                
+                           <php>
+                                break;                                
+                                case '3':</php>
+                                <div class="row">
+                                      <div class="col-md-3">
+                                      <if condition="empty($vo['photo'])">
+                                      <img src="__ROOT__/statics/images/personnoimg.jpg" alt="{$vo.title}" class="img-rounded img-responsive" style="margin: 10px auto;" />
+                                      <else />
+                                      <img data-src="{$vo.photo}" src="{$vo.photo}" alt="{$vo.title}" class="img-rounded img-responsive" style="margin: 10px auto;" />
+                                      </if>
+                                      </div>
+                                      <div class="col-md-7"> 
+                                      <h3><a href="{:leuu('chuzu',array('eid'=>$vo['eid']))}">{$vo.title}</a></h3>
+                                      <p>{$vo.xqname}<i class="glyphicon glyphicon-map-marker" style="margin-left: 5px;"></i>{$vo.address}</p>
+                                      <p>类型：{$housetype[$vo['housetype']]}/所在楼层：{$vo.lc}/{$vo.lcall}层</p>
+                                       <ul class="list-inline " style="font-size: 18px;font-weight: bold;"> 
+                                        <li>{$vo.mj}㎡(建筑面积)</li>
+                                        
+                                                                               
+                                        </ul> 
+                                        
+                                        <p class="small">{$vo['update_time']|formatDate}更新</p>                            
+                                      
+                                    </div>
+                                    <div class="col-md-2 text-right" style="margin-top: 40px;">
+                                    <p><span style="font-size: 2em;color:red;">{$vo.zj}</span>{$pricetypearr[$vo['pricetype']]}</p>
+                                    <p>
+                                    <php>
+                                    $jiage='';
+                                    switch($vo['pricetype']){
+                                        case '1':
+                                        $jiage= $vo['zj']*$vo['mj']*30;
+                                        echo $jiage.'元/月';
+                                        break;
+                                        case '2':
+                                        $jiage= $vo['zj']*$vo['mj'];
+                                        echo $jiage.'元/月';
+                                    }
+                                    </php>
+                                    
+                                    </p>
+                                    </div>
+                                     </div> 
+                                     <hr />                                
+                           
+                           <php>
+                           }
+                            </php>
+                            
+                                    
+            				</volist>
+                            </div></div>
+                    </div>
+                </div>
+                
+               
+              
+					
+			<div class="clearfix"></div>	
+			
+			<nav>
+				<ul class="pagination">
+					{$lists['page']}
+				</ul>
+			</nav>
+		</div>
+		<div class="col-md-3">
+        <a href="{:UU('jiazheng/index/postzufang')}" class="btn btn-warning btn-block"><i class="fa fa-edit fa-fw"></i>免费发布租房信息</a>
+			<div class="tc-box first-box"> 
+	        		<h4>热门文章</h4>
+	        	
+	        	
+                 <ul class="list-unstyled">
+                 <li><a href="#">如何找到发布租房信息</a></li>
+                 
+                 </ul>
+	        		<php>
+						$hot_articles=sp_sql_jz("cid:$portal_index_lastnews;field:ename,resume,eid,smeta;order:hits desc;limit:5;"); 
+					</php>
+		        	<ul class="unstyled">
+		        		<foreach name="hot_articles" item="vo">
+		        			<php>$top=$key<3?"top3":"";</php>
+							<li class="{$top}"><i>{$key+1}</i><a title="{$vo.ename}" href="{:leuu('article/index',array('id'=>$vo['eid']))}">{$vo.ename}</a></li>
+						</foreach>
+					</ul>
+				
+			</div>		
+			<php>$ad=sp_getad("portal_list_right_aside");</php>
+			<if condition="!empty($ad)">
+        	<div class="tc-box">
+	        	<div class="headtitle">
+	        		<h4>赞助商</h4>
+	        	</div>
+	        	<div>
+		        	{$ad}
+		        </div>
+			</div>
+			</if>
+		</div>
+    </div>
+    
+    
+    
+</div>
+<tc_include file="Public:footer" />
+    
+<!-- JavaScript -->
+<tc_include file="Public:scripts" />
+</body>
+</html>
